@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kahramanmaraş Baba Oğul Oto Kaporta'dan satılık ikinci el araçlar. Uygun fiyatlı, hasar kayıtlı veya temiz araç seçeneklerimizi inceleyin.">
+<meta name="keywords" content="kahramanmaraş satılık araba, oto kaporta, ikinci el araç, baba oğul kaporta">
+<meta name="author" content="Baba Oğul Oto Kaporta">
+<meta property="og:title" content="Satılık Araçlar | Baba Oğul Kaporta Kahramanmaraş">
+<meta property="og:description" content="Kaliteli işçilik ve uygun fiyatlı satılık araçlarımızı hemen inceleyin.">
+<meta property="og:image" content="img/logo.webp">
+<meta property="og:url" content="https://babaogulkaporta.com/satiliklar.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://babaogulkaporta.com/satiliklar.html">
+    <title>Satılık Araçlar | Baba Oğul Kaporta Kahramanmaraş</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="satiliklar.css"> 
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+       <link rel="icon" type="image/webp" href="img/logo (1).webp">
+    <link rel="icon" href="img/logo (1).webp" type="image/webp">
+<link rel="apple-touch-icon" href="img/logo (1).webp">
+</head>
+<body class="sales-page">
+
+    <nav class="simple-nav">
+        <div class="nav-container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Geri Dön</a>
+           <a href="#home" class="logo-wrapper">
+            <img src="img/logo.webp" alt="Baba Oğul Oto Kaporta" class="nav-logo-img">
+        </a>
+        </div>
+    </nav>
+
+<section class="sales-gallery" style="padding: 40px 0; background: transparent;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h1 class="section-title">SATILIK ARAÇLARIMIZ</h1>
+        
+        <p class="subtitle" style="text-align:center; margin-bottom: 40px;">
+            Aracınızın detayları için fotoğraflara tıklayabilirsiniz.
+
+            <div class="sales-grid" id="car-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                <p style="text-align:center; color:#aaa; grid-column: 1/-1;">Araçlar yükleniyor...</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="gallery-modal" id="galleryModal">
+        <span class="close-gallery" onclick="closeGallery()">&times;</span>
+        <div class="main-img-container">
+            <img id="mainGalleryImg" src="" alt="Araç Detay">
+        </div>
+        <div class="thumb-scroll" id="thumbScroll"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
+  <script>
+        const firebaseConfig = {
+            apiKey: "",
+            authDomain: "babaogulkaporta.firebaseapp.com",
+            projectId: "babaogulkaporta",
+            storageBucket: "babaogulkaporta.firebasestorage.app",
+            messagingSenderId: "603247279596",
+            appId: "1:603247279596:web:8cce688f03f403c34514c9"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        db.collection("satiliklar").orderBy("tarih", "desc").onSnapshot(snap => {
+            const grid = document.getElementById('car-list');
+            grid.innerHTML = ""; 
+
+            if (snap.empty) {
+                grid.innerHTML = '<p style="text-align:center; color:#aaa; grid-column: 1/-1;">Şu an yayında araç bulunmamaktadır.</p>';
+                return;
+            }
+
+            // Önce tüm araçları bir diziye aktaralım
+            let cars = [];
+            snap.forEach(doc => {
+                const data = doc.data();
+                const rawStatus = data.durum ? String(data.durum).trim().toLowerCase() : "";
+                const isSold = rawStatus === 'satildi' || rawStatus === 'satıldı';
+                cars.push({ ...data, isSold });
+            });
+
+            // Satılanları en alta atmak için sıralama yapalım
+            // isSold: false olanlar (0) başa, isSold: true olanlar (1) sona gelir.
+            cars.sort((a, b) => a.isSold - b.isSold);
+
+            cars.forEach(v => {
+                let resimler = v.resimler || (v.resim ? [v.resim] : []);
+                const kapakResmi = resimler[0] || 'https://via.placeholder.com/400x250?text=Resim+Yok';
+                
+                const isSold = v.isSold;
+                
+                // Sayı Formatlama Fonksiyonu
+                const formatPrice = (val) => val ? Number(val).toLocaleString('tr-TR') : "0";
+
+                let firsatHtml = "";
+                let fiyatHtml = `<div class="new-price-display">${formatPrice(v.fiyat)} TL</div>`;
+                
+                // Satıldı etiketi veya Fırsat etiketi
+                if (isSold) {
+                    firsatHtml = `<div class="sold-badge" style="position:absolute; top:15px; left:15px; background:#e74c3c; color:white; padding:8px 15px; font-weight:bold; border-radius:5px; z-index:10; box-shadow:0 4px 10px rgba(0,0,0,0.3);">SATILDI</div>`;
+                } else if (v.eskiFiyat && Number(v.eskiFiyat) > Number(v.fiyat)) {
+                    firsatHtml = `<div class="firsat-badge"><i class="fas fa-fire"></i> FIRSAT ARACI</div>`;
+                    fiyatHtml = `
+                        <div class="price-wrapper">
+                            <span class="old-price-display">${formatPrice(v.eskiFiyat)} TL</span>
+                            <span class="new-price-display">${formatPrice(v.fiyat)} TL</span>
+                        </div>`;
+                }
+
+                const waMessage = encodeURIComponent(`Merhaba, ${v.ad} (${v.yil}) aracınız hakkında detaylı bilgi alabilir miyim?`);
+
+                // Satıldıysa kartı soluklaştır ve etkileşimi kapa
+                const soldStyle = isSold ? "opacity: 0.6; filter: grayscale(1); pointer-events: none;" : "";
+
+                grid.innerHTML += `
+                    <div class="vehicle-card" style="position:relative; ${soldStyle}">
+                        ${firsatHtml}
+                        <div class="img-container" onclick='openGallery(${JSON.stringify(resimler)})' style="cursor:pointer; position:relative;">
+                            <img src="${kapakResmi}" alt="${v.ad}" style="width:100%; height:230px; object-fit:cover; display:block;">
+                            <div class="photo-count-badge">
+                                <i class="fas fa-camera"></i> ${resimler.length} Fotoğraf
+                            </div>
+                        </div>
+                        <div class="details" style="padding:20px;">
+                            <h3 style="margin:0 0 10px 0; color:#fff; font-size:1.25rem; font-family:'Oswald', sans-serif;">${v.ad}</h3>
+                            ${fiyatHtml}
+                            <div class="specs-grid">
+                                <div class="spec-item"><i class="fas fa-calendar-alt"></i> ${v.yil || '-'}</div>
+                                <div class="spec-item"><i class="fas fa-road"></i> ${v.km || '-'} KM</div>
+                                <div class="spec-item"><i class="fas fa-gas-pump"></i> ${v.motor || '-'}</div>
+                                <div class="spec-item"><i class="fas fa-cog"></i> ${v.sanziman || '-'}</div>
+                                <div class="spec-item"><i class="fas fa-car-side"></i> ${v.kaporta || '-'}</div>
+                                <div class="spec-item"><i class="fas fa-exclamation-triangle"></i> ${v.hasar || '-'}</div>
+                            </div>
+                            ${isSold ? `
+                                <div style="background:#333; color:#777; text-align:center; padding:12px; border-radius:8px; margin-top:15px; font-weight:bold; border:1px solid #444;">BU ARAÇ SATILMIŞTIR</div>
+                            ` : `
+                                <button class="view-detail-btn" onclick='openGallery(${JSON.stringify(resimler)})'>
+                                    <i class="fas fa-expand-alt"></i> FOTOĞRAFLARI İNCELE
+                                </button>
+                                <a href="https://wa.me/905459131662?text=${waMessage}" target="_blank" class="wa-contact">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp'tan Bilgi Al
+                                </a>
+                            `}
+                        </div>
+                    </div>`;
+            });
+        });
+
+        function openGallery(resimler) {
+            if(!resimler || resimler.length === 0) return;
+            const modal = document.getElementById('galleryModal');
+            const mainImg = document.getElementById('mainGalleryImg');
+            const thumbScroll = document.getElementById('thumbScroll');
+            
+            mainImg.src = resimler[0];
+            thumbScroll.innerHTML = "";
+
+            resimler.forEach((url, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = url;
+                if(index === 0) thumb.classList.add('active');
+                thumb.onclick = () => {
+                    mainImg.src = url;
+                    document.querySelectorAll('.thumb-scroll img').forEach(i => i.classList.remove('active'));
+                    thumb.classList.add('active');
+                };
+                thumbScroll.appendChild(thumb);
+            });
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeGallery();
+        });
+    </script>
+</body>
+</html>

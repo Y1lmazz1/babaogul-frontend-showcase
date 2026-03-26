@@ -1,0 +1,297 @@
+/* --- 1. DEĞİŞKENLER VE ANA AYARLAR --- */
+:root {
+    --primary: #ff6a00;
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
+    --text-muted: #ffffff;
+    --wa-green: #25d366;
+}
+
+/* Sayfa Sonu ve Arka Plan Beyazlığını Engelleme */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg); /* Kesin çözüm */
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+
+.sales-page {
+    background: linear-gradient(rgba(31, 31, 31, 0.9), rgba(15, 15, 15, 0.9)), 
+                url('img/arkaplan.webp') no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 120px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+}
+
+/* --- 2. NAVİGASYON (MODERN SİYAH) --- */
+.simple-nav {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(15px);
+    padding: 15px 0;
+    position: fixed;
+    top: 0; 
+    width: 100%; 
+    z-index: 1000;
+    border-bottom: 3px solid var(--primary);
+}
+
+.nav-container, .simple-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
+.logo span { color: var(--primary); }
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateX(-5px);
+    box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
+}
+
+/* --- 3. BAŞLIKLAR --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 60px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* --- 4. ARAÇ KARTLARI VE RESİMLER --- */
+.sales-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.vehicle-card {
+    background: rgba(30, 30, 30, 0.75) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(255, 106, 0, 0.2);
+}
+
+.img-container { 
+    position: relative; 
+    height: 240px; 
+    overflow: hidden;
+}
+
+.img-container img { 
+    width: 100%; height: 100%; object-fit: cover; transition: 0.5s;
+}
+
+.vehicle-card:hover .img-container img { transform: scale(1.1); }
+
+/* Rozetler (Fırsat, Foto Sayısı, Fiyat) */
+.firsat-badge {
+    position: absolute; top: 15px; right: 15px;
+    background: #2ecc71; color: white; padding: 6px 15px;
+    border-radius: 50px; font-weight: 800; font-size: 0.75rem;
+    z-index: 10; animation: pulseFirsat 2s infinite;
+    display: flex; align-items: center; gap: 5px;
+}
+
+@keyframes pulseFirsat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+.photo-count-badge, .photo-count {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(0, 0, 0, 0.7); color: white;
+    padding: 4px 10px; border-radius: 5px; font-size: 0.8rem;
+    display: flex; align-items: center; gap: 6px; z-index: 5;
+}
+
+.price-badge {
+    position: absolute; bottom: 12px; right: 12px;
+    background: var(--primary); color: white; padding: 6px 14px; 
+    border-radius: 8px; font-weight: 800; font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fiyatyansin 1.5s infinite alternate;
+}
+
+@keyframes fiyatyansin {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 15px rgba(255, 106, 0, 0.6); }
+}
+
+/* --- 5. DETAYLAR VE FİYAT ALANI --- */
+.details { padding: 25px; }
+
+.details h3 { 
+    color: white; font-size: 1.4rem; margin-bottom: 20px; 
+    border-left: 4px solid var(--primary); padding-left: 12px;
+}
+
+.price-wrapper { display: flex; flex-direction: column; gap: 2px; margin-bottom: 15px; }
+.old-price-display { color: rgba(255,255,255,0.4); text-decoration: line-through; font-size: 0.9rem; }
+.new-price-display { color: var(--primary); font-size: 1.6rem; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+
+.specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+.spec-item { 
+    color: var(--text-muted); font-size: 0.85rem; display: flex; 
+    align-items: center; gap: 10px; background: rgba(255,255,255,0.03);
+    padding: 8px; border-radius: 8px;
+}
+.spec-item i { color: var(--primary); font-size: 1rem; width: 20px; text-align: center; }
+.spec-item b { color: #fff; font-weight: 600; }
+
+/* --- 6. BUTONLAR --- */
+.detail-btn, .view-detail-btn {
+    width: 100%; background: #333; color: var(--primary); border: 1px solid #444;
+    padding: 12px; border-radius: 8px; font-weight: bold; margin-bottom: 10px;
+    cursor: pointer; transition: 0.3s;
+}
+.detail-btn:hover, .view-detail-btn:hover { background: var(--primary); color: white; }
+
+.wa-contact {
+    display: flex; align-items: center; justify-content: center; gap: 12px; 
+    background: var(--wa-green); color: white; text-decoration: none; 
+    padding: 14px; border-radius: 12px; font-weight: bold; transition: 0.3s;
+}
+.wa-contact:hover { background: #1ebe57; transform: scale(1.03); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); }
+
+/* --- 7. GALERİ / LIGHTBOX (TAMAMEN KARANLIK) --- */
+.lightbox-overlay, .gallery-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.98) !important; z-index: 10001;
+    display: none; flex-direction: column; align-items: center;
+    overflow-y: auto; padding: 40px 20px;
+}
+.gallery-modal.active { display: flex; }
+
+.main-img-container { width: 100%; max-width: 1100px; height: 70vh; display: flex; align-items: center; justify-content: center; position: relative; }
+.main-img-container img { max-width: 100%; max-height: 100%; border-radius: 8px; object-fit: contain; }
+
+.thumb-scroll { display: flex; gap: 10px; margin-top: 20px; overflow-x: auto; width: 100%; max-width: 1100px; padding: 10px; }
+.thumb-scroll img { width: 80px; height: 60px; object-fit: cover; border-radius: 5px; cursor: pointer; opacity: 0.4; border: 2px solid transparent; }
+.thumb-scroll img.active { opacity: 1; border-color: var(--primary); }
+
+.close-gallery { position: fixed; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; z-index: 10002; transition: 0.3s; }
+.close-gallery:hover { color: var(--primary); transform: rotate(90deg); }
+
+/* --- 8. MOBİL UYUMLULUK --- */
+@media (max-width: 768px) {
+    .sales-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.8rem; }
+    .img-container { height: 200px; }
+    .back-btn { padding: 6px 12px; font-size: 0.75rem; }
+}
+/* İndirim ve Satıldı Etiketleri */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    z-index: 10;
+}
+.sold-badge { left: 10px; background: #e74c3c; color: white; }
+.discount-badge { right: 10px; background: #27ae60; color: white; }
+
+/* Satılan Araç Kartı */
+.is-sold { opacity: 0.7; pointer-events: none; }
+.sold-btn { background: #555 !important; cursor: not-allowed; }
+
+/* Fiyatlandırma Stili */
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 13px;
+    display: block;
+}
+.current-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ff6a00;
+}
+/* Araç Satıldı Etiketi */
+.sold-badge-main {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Satılan Kartın Gri Görünmesi */
+.vehicle-card.is-sold-active {
+    opacity: 0.7;
+    filter: grayscale(0.8);
+    pointer-events: none; /* Üzerine tıklanmasın derseniz bunu ekleyin */
+}
+
+.vehicle-card.is-sold-active .img-container {
+    cursor: default;
+}
+
+/* Satıldı Buton Tasarımı */
+.wa-contact-disabled {
+    background: #444;
+    color: #888;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+    display: block;
+    border: 1px solid #555;
+}
