@@ -58,13 +58,13 @@
 
   <script>
         const firebaseConfig = {
-            apiKey: "",
-            authDomain: "babaogulkaporta.firebaseapp.com",
-            projectId: "babaogulkaporta",
-            storageBucket: "babaogulkaporta.firebasestorage.app",
-            messagingSenderId: "603247279596",
-            appId: "1:603247279596:web:8cce688f03f403c34514c9"
-        };
+    apiKey: "YOUR_API_KEY_HERE",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID_HERE"
+};
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
@@ -78,7 +78,6 @@
                 return;
             }
 
-            // Önce tüm araçları bir diziye aktaralım
             let cars = [];
             snap.forEach(doc => {
                 const data = doc.data();
@@ -87,8 +86,6 @@
                 cars.push({ ...data, isSold });
             });
 
-            // Satılanları en alta atmak için sıralama yapalım
-            // isSold: false olanlar (0) başa, isSold: true olanlar (1) sona gelir.
             cars.sort((a, b) => a.isSold - b.isSold);
 
             cars.forEach(v => {
@@ -97,13 +94,12 @@
                 
                 const isSold = v.isSold;
                 
-                // Sayı Formatlama Fonksiyonu
+               
                 const formatPrice = (val) => val ? Number(val).toLocaleString('tr-TR') : "0";
 
                 let firsatHtml = "";
                 let fiyatHtml = `<div class="new-price-display">${formatPrice(v.fiyat)} TL</div>`;
-                
-                // Satıldı etiketi veya Fırsat etiketi
+              
                 if (isSold) {
                     firsatHtml = `<div class="sold-badge" style="position:absolute; top:15px; left:15px; background:#e74c3c; color:white; padding:8px 15px; font-weight:bold; border-radius:5px; z-index:10; box-shadow:0 4px 10px rgba(0,0,0,0.3);">SATILDI</div>`;
                 } else if (v.eskiFiyat && Number(v.eskiFiyat) > Number(v.fiyat)) {
@@ -117,7 +113,7 @@
 
                 const waMessage = encodeURIComponent(`Merhaba, ${v.ad} (${v.yil}) aracınız hakkında detaylı bilgi alabilir miyim?`);
 
-                // Satıldıysa kartı soluklaştır ve etkileşimi kapa
+           
                 const soldStyle = isSold ? "opacity: 0.6; filter: grayscale(1); pointer-events: none;" : "";
 
                 grid.innerHTML += `

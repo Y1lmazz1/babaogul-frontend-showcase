@@ -1,10 +1,10 @@
-// Sayfa yüklenmeden önce kontrol et
+
 firebase.auth().onAuthStateChanged((user) => {
     if (!user) {
-        // Oturum kapalıysa login sayfasına şutla
+  
         window.location.href = "admin-login.html";
     } else {
-        // Giriş varsa sayfayı göster (HTML'de body style="display:none" yapmıştık ya, onu açar)
+    
         document.body.style.display = "block";
     }
 });

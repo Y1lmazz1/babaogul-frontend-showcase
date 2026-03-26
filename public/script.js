@@ -4,11 +4,11 @@ const introOverlay = document.querySelector('.intro-overlay');
 if (introOverlay) {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            introOverlay.style.opacity = '0'; // Kaybolma efekti başlat
+            introOverlay.style.opacity = '0'; 
             setTimeout(() => {
-                introOverlay.style.display = 'none'; // Tamamen gizle
-            }, 1000); // Transition süresi kadar bekle
-        }, 3000); // Intro'nun ekranda kalma süresi (3 saniye)
+                introOverlay.style.display = 'none'; 
+            }, 1000); 
+        }, 3000);
     });
 }
 
@@ -31,7 +31,7 @@ function changeSlide(direction) {
     showAboutSlide(currentAboutSlide + direction);
 }
 
-// Otomatik akış (5 saniyede bir)
+
 setInterval(() => {
     changeSlide(1);
 }, 5000);
@@ -48,13 +48,13 @@ let itemSize;
 
 function calculateGallerySize() {
     if (galleryItems.length > 0) {
-        // Gap (20px) dahil gerçek genişliği hesaplar
+
         itemSize = galleryItems[0].getBoundingClientRect().width + 20; 
     }
 }
 
 function moveGallery() {
-    // Sona gelince başa dönme (Görünen 3 kart olduğu varsayımıyla)
+
     let maxMove = window.innerWidth < 768 ? galleryItems.length - 1 : galleryItems.length - 3;
     
     if (galleryCounter >= maxMove) { 
@@ -65,17 +65,15 @@ function moveGallery() {
     carouselSlide.style.transform = `translateX(${-itemSize * galleryCounter}px)`;
 }
 
-// İlk hesaplama ve ekran boyutu değişince güncelleme
 calculateGallerySize();
 window.addEventListener('resize', () => {
     calculateGallerySize();
     carouselSlide.style.transform = `translateX(${-itemSize * galleryCounter}px)`;
 });
 
-// Galeri Otomatik Akış (4 saniyede bir)
+
 let galleryInterval = setInterval(moveGallery, 4000);
 
-// Manuel Kontroller
 nextBtn.addEventListener('click', () => {
     clearInterval(galleryInterval);
     moveGallery();
@@ -99,7 +97,7 @@ const lightboxImg = document.querySelector('.lightbox-img');
 const allImages = document.querySelectorAll('.gallery-item img, .img-wrapper img');
 
 allImages.forEach(img => {
-    img.style.cursor = 'pointer'; // Tıklanabilir olduğunu belli et
+    img.style.cursor = 'pointer'; 
     img.addEventListener('click', () => {
         lightbox.classList.add('active');
         lightboxImg.src = img.src; 
@@ -107,7 +105,7 @@ allImages.forEach(img => {
     });
 });
 
-// Kapatma: Siyah alana veya çarpıya basınca
+
 lightbox.addEventListener('click', (e) => {
     if (e.target !== lightboxImg) { 
         lightbox.classList.remove('active');
@@ -139,9 +137,8 @@ const revealOnScroll = () => {
     });
 };
 
-// Sayfa yüklendiğinde ilk görünür olanları aç
 window.addEventListener("load", revealOnScroll);
-// Kaydırdıkça diğerlerini aç
+
 window.addEventListener("scroll", revealOnScroll);
 const baContainers = document.querySelectorAll('.ba-image-wrapper');
 
@@ -160,7 +157,7 @@ baContainers.forEach(container => {
         container.querySelector('.ba-slider-bar').style.left = percentage + '%';
     });
 
-    // Mobil için dokunmatik desteği
+
     container.addEventListener('touchmove', (e) => {
         let rect = container.getBoundingClientRect();
         let x = e.touches[0].clientX - rect.left;
@@ -175,7 +172,7 @@ baContainers.forEach(container => {
         container.querySelector('.ba-slider-bar').style.left = percentage + '%';
     });
 });
-// Sayfa yüklendikten 3 saniye sonra popup'ı aç
+
 window.addEventListener('load', function() {
     setTimeout(function() {
         const popup = document.getElementById('sale-popup');
@@ -185,21 +182,20 @@ window.addEventListener('load', function() {
     }, 3000);
 });
 
-// Kapatma Fonksiyonları
+
 document.addEventListener('click', function(e) {
     const popup = document.getElementById('sale-popup');
-    
-    // 1. X butonuna basıldığında
+
     if (e.target.classList.contains('close-popup')) {
         popup.style.display = 'none';
     }
     
-    // 2. Popup'ın dışındaki siyah alana basıldığında
+ 
     if (e.target === popup) {
         popup.style.display = 'none';
     }
     
-    // 3. "Hemen İncele" butonuna basıldığında (Sayfaya yönlendirip kapatır)
+   
     if (e.target.id === 'go-to-sales') {
         popup.style.display = 'none';
     }
@@ -210,11 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const menuIcon = menuToggle.querySelector('i');
 
-    // Menü açma/kapama işlemi
+
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         
-        // İkon değiştirme (Üç çizgiden X'e)
         if (navMenu.classList.contains('active')) {
             menuIcon.classList.replace('fa-bars', 'fa-times');
         } else {
@@ -222,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Herhangi bir linke tıklandığında menüyü otomatik kapat
+   
     document.querySelectorAll('#nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');

@@ -5,4 +5,4 @@ Bu proje, bir oto kaporta dükkanı için geliştirilmiş, Firebase tabanlı bir
 * Araç ekleme, silme ve düzenleme
 * Firebase Auth ile güvenli giriş
 * ImgBB API ile resim yükleme
-* Responsive (Mobil uyumlu) tasarım
+* Responsive (Mobil uyumlu) tasarım # 

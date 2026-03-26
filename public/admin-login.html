@@ -144,7 +144,9 @@
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
 
 <script>
-  const firebaseConfig = {
+
+   
+   const firebaseConfig = {
     apiKey: "YOUR_API_KEY_HERE",
     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
     projectId: "YOUR_PROJECT_ID",
@@ -152,12 +154,10 @@
     messagingSenderId: "YOUR_SENDER_ID",
     appId: "YOUR_APP_ID"
 };
-
-    // Firebase'i Başlat
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    // Geri kalan fonksiyonun zaten doğru...
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
     
 
     async function checkLogin() {
@@ -176,16 +176,16 @@
         err.style.display = "none";
 
         try {
-            // Firebase Auth ile Giriş Sorgusu
+          
             await auth.signInWithEmailAndPassword(e, p);
             
-            // BAŞARILI: Direkt yönlendir (sessionStorage'a gerek yok, Firebase hatırlar)
-            window.location.href = "admin-panel"; // .html silindi
+        
+            window.location.href = "admin-panel";
 
         } catch (error) {
             console.error("Giriş Hatası:", error.code);
             err.style.display = "block";
-            // Hata mesajını özelleştirebilirsin
+         
             if(error.code === "auth/user-not-found") err.innerText = "Böyle bir kullanıcı yok!";
             else if(error.code === "auth/wrong-password") err.innerText = "Şifre hatalı usta!";
             else err.innerText = "Giriş başarısız. Bilgileri kontrol et.";
@@ -193,7 +193,7 @@
             btn.disabled = false;
             btn.innerText = "GİRİŞ YAP";
             
-            // Sarsılma Efekti
+         
             const container = document.querySelector('.login-container');
             container.style.boxShadow = "0 0 20px #ff4444";
             setTimeout(() => container.style.boxShadow = "0 15px 35px rgba(0,0,0,0.5)", 500);

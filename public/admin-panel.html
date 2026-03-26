@@ -156,17 +156,17 @@
     appId: "YOUR_APP_ID"
 };;
 
-    // Firebase Initialization
+
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-    // ✅ BU KISMI BÖYLE GÜNCELLE
+
 const auth = firebase.auth();
 auth.onAuthStateChanged((user) => {
     if (!user) {
-        // Giriş yoksa kapı dışarı
+
         window.location.href = "admin-login"; // .html silindi
     } else {
-        // GİRİŞ VARSA SAYFAYI GÖSTER!
+
         document.body.style.display = "block";
         console.log("Hoş geldin usta:", user.email);
     }
@@ -342,12 +342,12 @@ const res = await fetch(`https://api.imgbb.com/1/upload?key=YOUR_IMGBB_API_KEY`,
                 resimler: finalUrls,
                 resim: kapakResmi,
                 tarih: Date.now(),
-                durum: "satista" // Varsayılan durum
+                durum: "satista"
             };
 
-            // Eğer düzenleme yapılıyorsa mevcut durumu koru
+          
             if (id) {
-                delete veri.durum; // Mevcut durumu ezmemek için güncelleme paketinden çıkarıyoruz
+                delete veri.durum; 
             }
 
             if(id && oldPriceStored > 0) {

@@ -4,7 +4,7 @@ function login() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Giriş başarılı, yönetim paneline yönlendir
+           
             window.location.href = "admin-panel.html";
         })
         .catch((error) => {

@@ -1,9 +1,9 @@
 /* --- 1. DEĞİŞKENLER VE TEMEL SIFIRLAMA --- */
 :root {
-    --primary: #ff6a00;    /* İmza Turuncu */
-    --dark: #1a1a1a;       /* Sigma Siyah */
-    --light: #fcfcfc;      /* Temiz Arka Plan */
-    --grey: #444;          /* Okunaklı Metin */
+    --primary: #ff6a00;   
+    --dark: #1a1a1a;    
+    --light: #fcfcfc;     
+    --grey: #444;      
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -62,7 +62,6 @@ p {
 
 /* --- 4. MOBİL ÇÖZÜMLER (KRİTİK AYARLAR) --- */
 @media screen and (max-width: 768px) {
-    /* Yatay kaymayı kesin olarak engelle */
     html, body { 
         position: relative;
         width: 100vw;
@@ -72,16 +71,16 @@ p {
         padding: 0 15px;
     }
 
-    /* Mobilde Başlık Boyutlarını Optimize Et */
+
     h1 { font-size: 2rem !important; }
     h2 { font-size: 1.6rem !important; }
     
-    /* Mobil Galeri & Kaydırma Alanları */
+
     .carousel-container { 
         width: 100% !important; 
         overflow-x: auto !important; 
         padding: 20px 5px !important;
-        -webkit-overflow-scrolling: touch; /* iOS kaydırma akıcılığı */
+        -webkit-overflow-scrolling: touch; 
     }
 
     .carousel-slide { 
@@ -94,10 +93,10 @@ p {
 /* --- 5. İLETİŞİM & TOOLTIP --- */
 .contact { 
     padding: 80px 0; 
-    background-color: #afadab; /* Endüstriyel Gri */
+    background-color: #afadab;
 }
 
-/* Masaüstü Tooltip */
+
 @media screen and (min-width: 1024px) {
     .tooltip-text {
         position: absolute;
@@ -118,7 +117,6 @@ p {
 
 .hero { 
     height: 100vh; 
-    /* Arka plan görseli üzerine %70 karartma perdesi */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/arkaplan.webp); 
     background-size: cover; 
     background-position: center; 
@@ -132,7 +130,6 @@ p {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* Hero İçeriği Öncesi Küçük Logo */
 .hero-content::before {
     content: "";
     display: block;
@@ -141,12 +138,12 @@ p {
     margin: 0 auto 10px;
     background: url(img/logo.png) center no-repeat;
     background-size: contain;
-    filter: brightness(1.2); /* Logoyu biraz parlatır */
+    filter: brightness(1.2); 
 }
 
 .hero h1 { 
     font-family: 'Oswald', sans-serif; 
-    font-size: 4.5rem; /* Masaüstü için büyük ve vurucu */
+    font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 20px; 
     text-transform: uppercase; 
@@ -161,7 +158,7 @@ p {
     line-height: 1.6;
 }
 
-/* Buton Grupları ve Genel Buton Ayarları */
+
 .hero-btns a, 
 .nav-btn, 
 .whatsapp-btn, 
@@ -184,7 +181,7 @@ p {
 /* --- MOBİL UYUMLULUK --- */
 @media screen and (max-width: 768px) {
     .hero h1 { 
-        font-size: 2.2rem !important; /* Mobilde çok kaba durmaması için optimize edildi */
+        font-size: 2.2rem !important; 
         letter-spacing: 1px;
     }
     
@@ -196,12 +193,12 @@ p {
     .hero-btns a {
         padding: 12px 25px;
         font-size: 0.9rem;
-        width: 80%; /* Butonlar mobilde alt alta daha iyi durabilir */
+        width: 80%; 
         margin: 5px auto;
     }
 
     .hero-content::before {
-        width: 120px; /* Mobilde logoyu biraz küçült */
+        width: 120px; 
         height: 50px;
     }
 }
@@ -247,9 +244,9 @@ p {
     letter-spacing: 1px;
 }
 
-/* Harita Kapsayıcısı (Masaüstü) */
+
 .map-container {
-    flex: 1.5; /* Harita bilgi alanından biraz daha geniş dursun */
+    flex: 1.5; 
     min-width: 300px;
     width: 100%;
     height: 450px;
@@ -288,7 +285,7 @@ p {
         width: 100% !important;
         height: 300px !important; 
         min-height: 300px !important;
-        order: 2; /* Haritayı bilgilerin altına sabitler */
+        order: 2;
     }
 }
 /* --- BİRLEŞTİRİLMİŞ BUTON SİSTEMİ --- */
@@ -388,17 +385,17 @@ p {
     .btn-primary, .btn-secondary, .whatsapp-btn { 
         padding: 12px 25px !important; 
         font-size: 0.85rem !important; 
-        width: 100%; /* Mobilde butonlar tam genişlik */
+        width: 100%; 
         text-align: center;
         letter-spacing: 1px;
     }
 
     .mobile-menu-btn {
-        display: block; /* Sadece mobilde görünür */
+        display: block;
     }
 }
 .mobile-menu-btn {
-    display: none; /* Masaüstünde görünmez */
+    display: none; 
     background: transparent;
     border: none;
     color: #9c0d0d;
@@ -416,22 +413,21 @@ p {
 /* 2. Mobil Ekran Ayarları (Kırılma Noktası: 992px) */
 @media screen and (max-width: 992px) {
     
-    /* Hamburger butonunu mobilde zorla göster */
     .mobile-menu-btn {
         display: block !important;  
     }
 
-    /* Menü Listesi (Varsayılan Kapalı) */
+    
     #nav-menu {
-        display: none; /* Başlangıçta gizli */
+        display: none; 
         flex-direction: column;
         position: absolute;
-        top: 100%; /* Navbar yüksekliğinin hemen altı */
+        top: 100%; 
         left: 0;
         width: 100%;
-        background: rgba(26, 26, 26, 0.98); /* Koyu Sigma Arka Planı */
+        background: rgba(26, 26, 26, 0.98); 
         padding: 20px 0;
-        border-bottom: 3px solid #ff6a00; /* Alt Turuncu Çizgi */
+        border-bottom: 3px solid #ff6a00; 
         box-shadow: 0 15px 30px rgba(231, 25, 25, 0.5);
         gap: 0;
         z-index: 100000;
@@ -439,13 +435,13 @@ p {
         -webkit-backdrop-filter: blur(10px);
     }
 
-    /* JavaScript 'active' sınıfı eklendiğinde menüyü göster */
+   
     #nav-menu.active {
         display: flex !important;
         animation: sigmaNavFadeIn 0.3s ease-out forwards;
     }
 
-    /* Mobil Linklerin Tasarımı */
+
     #nav-menu li {
         width: 100%;
         list-style: none;
@@ -468,7 +464,7 @@ p {
         color: #ff6a00 !important;
     }
 
-    /* Satılıklar Butonu Mobilde Tam Genişlik */
+
     .nav-sale-btn {
         width: 85% !important;
         margin: 20px auto !important;
@@ -478,7 +474,6 @@ p {
         box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4) !important;
     }
 
-    /* Logo Boyutu Mobilde Biraz Küçülsün */
     .nav-logo-img {
         height: 40px !important;
     }
@@ -496,7 +491,7 @@ p {
     }
 }
 
-/* Ekran çok küçükse (Telefonlar) */
+
 @media screen and (max-width: 480px) {
     #nav-menu li a {
         font-size: 1rem;
@@ -511,7 +506,7 @@ p {
     width: 100%; 
     top: 0; 
     left: 0;
-    z-index: 99999; /* Her şeyin üstünde olduğundan emin olalım */
+    z-index: 99999; 
     transition: 0.4s; 
     border-bottom: 2px solid var(--primary, #ff6a00);
     backdrop-filter: blur(10px);
@@ -554,7 +549,7 @@ p {
     color: var(--primary, #ff6a00);
 }
 
-/* Masaüstü Alt Çizgi Animasyonu */
+
 .nav-links li a:not(.nav-sale-btn)::after {
     content: '';
     position: absolute;
@@ -592,7 +587,6 @@ p {
     border-color: white;
 }
 
-/* Parlama Efekti */
 .nav-sale-btn::after {
     content: '';
     position: absolute;
@@ -610,7 +604,7 @@ p {
     transition: 0.8s ease-in-out;
 }
 
-/* --- MOBİL AYARLAR (Hamburger & Menü) --- */
+
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -627,7 +621,7 @@ p {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Navbar yüksekliği + padding */
+        top: 80px;
         left: 0;
         width: 100%;
         background: rgba(18, 18, 18, 0.98);
@@ -671,7 +665,7 @@ p {
     overflow: hidden;
 }
 
-/* Başlık Ayarları */
+
 #hakkimizda h2, 
 #hakkimizda h3 {
     color: #ffffff;
@@ -682,7 +676,7 @@ p {
     text-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
-/* Liste Maddeleri (Hakkımızda Itemları) */
+
 #hakkimizda .about-item {
     background: rgba(255, 255, 255, 0.05); /* Modern yarı şeffaf görünüm */
     border-left: 4px solid var(--primary, #ff6a00); /* Sol turuncu şerit */
@@ -696,15 +690,15 @@ p {
     gap: 15px;
 }
 
-/* Hover Efekti: Sağa kayma ve parlama */
+
 #hakkimizda .about-item:hover {
     background: rgba(255, 255, 255, 0.12);
     transform: translateX(12px); 
     box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
-    border-left-width: 6px; /* Turuncu şerit kalınlaşır */
+    border-left-width: 6px;
 }
 
-/* Maddelerin içindeki ikonlar veya güçlü metinler için */
+
 #hakkimizda .about-item strong {
     color: var(--primary, #ff6a00);
     font-weight: 700;
@@ -719,11 +713,11 @@ p {
     #hakkimizda .about-item {
         padding: 15px;
         font-size: 0.95rem;
-        transform: none !important; /* Mobilde istemsiz kaymaları önler */
+        transform: none !important;
     }
 
     #hakkimizda .about-item:hover {
-        transform: translateX(5px); /* Mobilde daha az kayma */
+        transform: translateX(5px); 
     }
 }
 /* --- Gelişmiş Lightbox (Resim Görüntüleyici) --- */
@@ -739,34 +733,34 @@ p {
     z-index: 99999 !important; 
     justify-content: center;
     align-items: center;
-    cursor: zoom-out; /* Kullanıcıya dışarı tıklarsa kapanacağı sinyalini verir */
+    cursor: zoom-out;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-/* Lightbox aktif olduğunda yumuşak açılış */
+
 .lightbox.active {
     display: flex !important;
     opacity: 1 !important;
 }
 
-/* İçindeki resim */
+
 .lightbox-img {
     max-width: 90%;
     max-height: 85%;
-    object-fit: contain; /* Fotoğrafın oranını asla bozmaz, ekrana sığdırır */
-    border: 3px solid rgba(255, 255, 255, 0.1); /* Saf beyaz yerine hafif şeffaf daha modern durur */
+    object-fit: contain; 
+    border: 3px solid rgba(255, 255, 255, 0.1); 
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
     transform: scale(0.9);
     transition: transform 0.3s ease;
-    cursor: default; /* Resmin üzerine gelince imleç normale döner */
+    cursor: default; 
 }
 
 .lightbox.active .lightbox-img {
-    transform: scale(1); /* Resim hafifçe büyüyerek açılır */
+    transform: scale(1); 
 }
 
-/* Kapatma Butonu (X) - Eğer HTML'de varsa */
+
 .lightbox-close {
     position: absolute;
     top: 20px;
@@ -787,7 +781,7 @@ p {
 /* --- MOBİL AYARI --- */
 @media screen and (max-width: 768px) {
     .lightbox-img {
-        max-width: 95%; /* Mobilde ekranı daha çok kaplasın */
+        max-width: 95%; 
         max-height: 70%;
         border-width: 1px;
     }
@@ -798,7 +792,7 @@ p {
     bottom: 20px;
     right: 20px;
     background-color: #25d366;
-    color: white !important; /* Rengi zorla beyaz tutar */
+    color: white !important; 
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -809,10 +803,10 @@ p {
     z-index: 9999;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Daha akıcı zıplama efekti */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
-/* Nabız Efekti */
+
 .whatsapp-fixed::before {
     content: '';
     position: absolute;
@@ -830,13 +824,13 @@ p {
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); opacity: 0; }
 }
 
-/* Hover Durumu */
+
 .whatsapp-fixed:hover {
     transform: scale(1.1);
     background-color: #20ba5a;
 }
 
-/* Tooltip (Yazı Baloncuğu) */
+
 .tooltip-text {
     position: absolute;
     right: 75px;
@@ -849,10 +843,10 @@ p {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
-    pointer-events: none; /* Yazıya tıklanmasını engeller, butona engel olmaz */
+    pointer-events: none; 
 }
 
-/* Hover'da Tooltip Göster */
+
 .whatsapp-fixed:hover .tooltip-text {
     opacity: 1;
     visibility: visible;
@@ -867,41 +861,41 @@ p {
         bottom: 15px;
         right: 15px;
     }
-    .tooltip-text { display: none !important; } /* Mobilde tooltip karmaşasını engeller */
+    .tooltip-text { display: none !important; } 
 }
 /* --- MODERN CAM EFEKTLİ GALERİ (DİKEY FOTOLAR İÇİN) --- */
 .gallery { 
     padding: 60px 0; 
-    background: #afadab; /* Arka plan */
+    background: #afadab; 
     overflow: hidden; 
 }
 
-/* Kapsayıcı: Kaydırmayı aktif eder */
+
 .carousel-container { 
     width: 95%; 
     margin: 0 auto;
-    overflow-x: auto; /* Yatay kaydırma açık */
+    overflow-x: auto;
     padding: 20px 0;
-    scrollbar-width: none; /* Firefox için scrollbar gizle */
-    -ms-overflow-style: none; /* IE/Edge için scrollbar gizle */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
-/* Chrome/Safari için scrollbar gizle (işlevi sürer) */
+
 .carousel-container::-webkit-scrollbar { 
     display: none; 
 }
 
-/* Kartların Dizildiği Slayt */
+
 .carousel-slide { 
     display: flex; 
     gap: 20px; 
-    width: max-content; /* Kartların yan yana kalmasını sağlar */
+    width: max-content;
 }
 
 /* KARTIN YENİ KİBAR VE SIKIŞMAYAN YAPISI */
 .gallery-card { 
-    flex: 0 0 160px; /* Kart genişliğini 160px yaptık. Çok daha kibar. */
-    background: rgba(255, 255, 255, 0.1); /* Şeffaf cam */
+    flex: 0 0 160px; 
+    background: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     border: 1px solid rgba(255, 255, 255, 0.2); 
@@ -916,15 +910,14 @@ p {
 
 /* FOTOĞRAFLARI KAPSÜL İÇİNE SIKICA SIKIŞTIRAN AYAR */
 .gallery-card img { 
-    width: 100%;        /* Kartın 160px'lik genişliğine uyar */
-    height: 250px;      /* Sabit bir yükseklik. Dikey fotolar için uygun. */
-    object-fit: cover;  /* Fotoğrafı kutuya sığdırır, taşanı kırpar (ASLA TAŞTIRMAZ) */
-    object-position: center; /* Fotoğrafın ortasını odaklar */
-    border-radius: 15px; /* Köşeleri yuvarlak dikdörtgen */
+    width: 100%;      
+    height: 250px;     
+    object-fit: cover;  
+    object-position: center; 
+    border-radius: 15px;
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Kart Başlığı (p etiketi) */
 .gallery-card-title {
     color: #ffffff; 
     font-size: 0.9rem;
@@ -934,36 +927,36 @@ p {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Hover Efekti */
+
 .gallery-card:hover {
     transform: translateY(-8px); 
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); 
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* --- MOBİL ÇÖZÜMLER (768px Altı) --- */
+
 @media screen and (max-width: 768px) {
     .gallery-card { 
-        flex: 0 0 140px; /* Mobilde kartları biraz daha küçülttük */
+        flex: 0 0 140px; 
     }
     
     .gallery-card img {
-        height: 220px; /* Mobilde yükseklik ayarı */
+        height: 220px;
     }
 }
 /* --- MODERN POPUP SİSTEMİ --- */
 .popup-overlay {
-    display: none; /* JS ile 'flex' yapılacak */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(18, 18, 18, 0.85); /* Biraz daha koyu bir siyah */
+    background: rgba(18, 18, 18, 0.85); 
     z-index: 10000;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px); /* Arka planı yumuşakça bulanıklaştırır */
+    backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px);
 }
 
@@ -974,19 +967,19 @@ p {
     border-radius: 24px;
     text-align: center;
     max-width: 420px;
-    width: 90%; /* Mobilde ekrana sığması için */
+    width: 90%; 
     position: relative;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Daha gerçekçi bir gölge */
-    animation: popupSlideIn 0.4s ease-out; /* Giriş animasyonu */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); 
+    animation: popupSlideIn 0.4s ease-out;
 }
 
-/* Popup Giriş Animasyonu */
+
 @keyframes popupSlideIn {
     from { transform: translateY(30px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Başlık ve Metin */
+
 .popup-content h3 {
     color: var(--primary, #ff6a00);
     font-family: 'Oswald', sans-serif;
@@ -1002,7 +995,7 @@ p {
     line-height: 1.5;
 }
 
-/* Kapatma (X) Butonu */
+
 .close-popup {
     position: absolute;
     top: 15px;
@@ -1017,10 +1010,10 @@ p {
 
 .close-popup:hover {
     color: var(--primary, #ff6a00);
-    transform: rotate(90deg) scale(1.1); /* Hem döner hem büyür */
+    transform: rotate(90deg) scale(1.1); 
 }
 
-/* --- MOBİL UYUMLULUK --- */
+
 @media screen and (max-width: 480px) {
     .popup-content {
         padding: 30px 20px;
@@ -1034,30 +1027,30 @@ p {
 .admin-link {
     display: inline-block;
     margin-top: 15px;
-    color: #666; /* Biraz daha okunabilir ama hala düşük profilli gri */
+    color: #666; 
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.5px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(102, 102, 102, 0.3); /* Saf siyah yerine yumuşak çerçeve */
+    border: 1px solid rgba(102, 102, 102, 0.3); 
     padding: 6px 16px;
-    border-radius: 30px; /* Tam kapsül form */
+    border-radius: 30px; 
     text-transform: uppercase;
 }
 
 .admin-link:hover {
     color: var(--primary, #ff6a00);
     border-color: var(--primary, #ff6a00);
-    background: rgba(255, 106, 0, 0.08); /* Hafif turuncu şeffaf dolgu */
-    transform: translateY(-2px); /* Çok hafif yukarı kalkma hissi */
-    box-shadow: 0 4px 10px rgba(255, 106, 0, 0.1); /* Turuncu hafif parlama */
+    background: rgba(255, 106, 0, 0.08); 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(255, 106, 0, 0.1); 
 }
 
-/* Mobilde dokunma kolaylığı */
+
 @media screen and (max-width: 768px) {
     .admin-link {
-        padding: 8px 18px; /* Mobilde parmakla basmak daha kolay olsun */
+        padding: 8px 18px; 
         font-size: 0.7rem;
     }
 }
@@ -1068,13 +1061,13 @@ p {
     left: 0;
     width: 100%; 
     height: 100%;
-    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%); /* Tam siyah yerine merkezden hafif derinlikli */
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
     opacity: 1;
-    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1); /* Daha pürüzsüz kapanış */
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .intro-content { 
@@ -1083,7 +1076,7 @@ p {
 }
 
 .intro-logo {
-    width: 220px; /* Bir tık büyütüldü */
+    width: 220px; 
     opacity: 0;
     transform: scale(0.85);
     filter: drop-shadow(0 0 0 rgba(255, 106, 0, 0)); /* Başlangıçta gölgesiz */
@@ -1092,7 +1085,7 @@ p {
         logoGlow 3s ease-in-out infinite 2s; /* Girişten sonra sürekli hafif parlama */
 }
 
-/* Logonun Görkemli Girişi */
+
 @keyframes logoSigmaIn { 
     0% { 
         opacity: 0; 
@@ -1107,13 +1100,12 @@ p {
     } 
 }
 
-/* Sürekli Yaşayan Hafif Parlama Efekti */
+
 @keyframes logoGlow {
     0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 106, 0, 0.3)); }
     50% { filter: drop-shadow(0 0 30px rgba(255, 106, 0, 0.6)); }
 }
 
-/* Mobilde Logo Boyutu */
 @media screen and (max-width: 768px) {
     .intro-logo {
         width: 160px;
@@ -1122,7 +1114,7 @@ p {
 /* --- HİZMETLER (MODERN & SIGMA UPDATE) --- */
 .services { 
     padding: 60px 0 !important; 
-    background: #afadab; /* rgb(175, 173, 171) */
+    background: #afadab; 
 }
 
 .section-title { 
@@ -1137,7 +1129,7 @@ p {
     text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
 }
 
-/* Grid Yapısı (Mobil 2'li düzen korundu) */
+
 .service-grid { 
     display: grid !important; 
     grid-template-columns: 1fr 1fr !important; 
@@ -1147,7 +1139,7 @@ p {
     margin: 0 auto;
 }
 
-/* Hizmet Kartları */
+
 .service-card { 
     padding: 30px 15px !important; 
     background: #ffffff;
@@ -1163,14 +1155,13 @@ p {
     align-items: center;
 }
 
-/* Hover Efekti: Sigma Parlaması */
 .service-card:hover { 
     transform: translateY(-8px); 
     border-color: var(--primary);
     box-shadow: 0 15px 35px rgba(255, 106, 0, 0.15) !important;
 }
 
-/* Alt Çizgi Animasyonu */
+
 .service-card::after {
     content: '';
     position: absolute;
@@ -1186,7 +1177,7 @@ p {
     width: 100%;
 }
 
-/* İkonlar */
+
 .service-card i { 
     font-size: 2rem !important; 
     margin-bottom: 15px !important; 
@@ -1198,7 +1189,7 @@ p {
     transform: scale(1.2) rotate(5deg);
 }
 
-/* Metinler */
+
 .service-card h3 { 
     font-family: 'Oswald', sans-serif;
     font-size: 1rem !important; 
@@ -1217,7 +1208,7 @@ p {
 /* --- MASAÜSTÜ İÇİN ÖZEL DÜZENLEME --- */
 @media screen and (min-width: 769px) {
     .service-grid {
-        grid-template-columns: repeat(4, 1fr) !important; /* Masaüstünde 4'lü dizilim */
+        grid-template-columns: repeat(4, 1fr) !important; 
         gap: 25px !important;
     }
     .section-title { font-size: 3rem !important; }
@@ -1226,13 +1217,13 @@ p {
 
 section {
     position: relative;
-    padding: 100px 20px; /* Bölümlere daha fazla nefes alanı */
+    padding: 100px 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     background-color: var(--light, #fcfcfc);
     transition: background 0.5s ease;
 }
 
-/* Bölüm Ayracı (Hafif Gölge Efekti) */
+
 section::after {
     content: '';
     position: absolute;
@@ -1243,19 +1234,19 @@ section::after {
     background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
 }
 
-/* Ana Başlıklar (Hizmet & Hakkımızda) */
+
 .section-title, 
 .about-text h3 {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 2.8rem; /* Biraz daha görkemli */
+    font-size: 2.8rem;
     color: #1a1a1a;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 50px;
     
-    /* Lüks Kabartma Efekti */
+    
     text-shadow: 
         1px 1px 0px rgba(255, 255, 255, 0.8), 
         2px 2px 10px rgba(0, 0, 0, 0.05);
@@ -1263,7 +1254,7 @@ section::after {
     position: relative;
 }
 
-/* Başlık Altı Vurgu Çizgisi (Sigma Dokunuşu) */
+
 .section-title::before {
     content: '';
     position: absolute;
@@ -1276,7 +1267,7 @@ section::after {
     border-radius: 2px;
 }
 
-/* --- MOBİL UYUM --- */
+
 @media screen and (max-width: 768px) {
     section {
         padding: 60px 15px;
@@ -1297,23 +1288,23 @@ section::after {
 .map-container { 
     flex: 1.5; 
     min-width: 300px; 
-    height: 450px; /* Bir tık daha görkemli yükseklik */
-    border-radius: 20px; /* Köşeler daha yumuşak ve modern */
+    height: 450px; 
+    border-radius: 20px; 
     overflow: hidden; 
     position: relative;
-    background: #e5e3df; /* Harita yüklenirken boş görünmesin */
+    background: #e5e3df; 
     
-    /* Sigma Derinlik Efekti */
+   
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2); /* İnce beyaz çerçeve */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
     
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Harita üzerine gelince "Buradayız" hissi */
+
 .map-container:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(255, 106, 0, 0.2); /* Senin turuncunla hafif bir taban parlaması */
+    box-shadow: 0 20px 50px rgba(255, 106, 0, 0.2); 
     border-color: var(--primary, #ff6a00);
 }
 
@@ -1321,16 +1312,14 @@ section::after {
     width: 100% !important;
     height: 100% !important;
     border: 0;
-    filter: grayscale(20%) contrast(110%); /* Haritayı biraz daha dramatik ve net yapar */
+    filter: grayscale(20%) contrast(110%); 
     transition: filter 0.5s ease;
 }
 
-/* Fare üzerine gelince harita renklenir */
 .map-container:hover iframe {
     filter: grayscale(0%) contrast(100%);
 }
 
-/* --- MOBİL HARİTA AYARI --- */
 @media screen and (max-width: 768px) {
     .map-container { 
         height: 300px; 
@@ -1353,7 +1342,7 @@ section::after {
     flex-wrap: wrap; 
 }
 
-/* Slider Alanı - Sigma Derinlik */
+
 .about-slider { 
     flex: 1; 
     min-width: 350px; 
@@ -1365,11 +1354,10 @@ section::after {
     border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Görsel Koruma Ayarı */
 .slide { 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; /* Resimleri asla sünnetmez, profesyonelce sığdırır */
+    object-fit: cover;
     position: absolute; 
     opacity: 0; 
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1); 
@@ -1379,7 +1367,7 @@ section::after {
     opacity: 1; 
 }
 
-/* Metin Alanı */
+
 .about-text { 
     flex: 1; 
     min-width: 350px; 
@@ -1395,7 +1383,7 @@ section::after {
     line-height: 1.1;
 }
 
-/* Özellikler (Kapsüller) */
+
 .about-features { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -1421,7 +1409,7 @@ section::after {
     box-shadow: 0 6px 15px rgba(255, 106, 0, 0.1);
 }
 
-/* --- MOBİL ÇÖZÜMLER (TAM UYUMLU) --- */
+
 @media screen and (max-width: 768px) {
     .about { padding: 60px 0; }
 
@@ -1432,10 +1420,10 @@ section::after {
 
     .about-slider {
         width: 100% !important;
-        height: 300px !important; /* Mobilde görsel için ideal yükseklik */
+        height: 300px !important;
         min-height: 300px !important;
         flex: none !important;
-        order: -1 !important; /* Görseli metnin üstüne taşır */
+        order: -1 !important; 
         border-radius: 15px !important;
     }
 
@@ -1482,7 +1470,7 @@ section::after {
     position: relative;
 }
 
-/* Hover'da Sigma Etkisi */
+
 .comparison-card:hover { 
     transform: translateY(-10px); 
     box-shadow: 0 20px 40px rgba(255, 106, 0, 0.15) !important; 
@@ -1492,7 +1480,7 @@ section::after {
 .comparison-box { 
     display: flex; 
     position: relative; 
-    height: 280px; /* Görselleri daha geniş gösterir */
+    height: 280px; 
     cursor: pointer; 
     overflow: hidden;
 }
@@ -1501,29 +1489,28 @@ section::after {
     position: relative; 
     width: 50%; 
     overflow: hidden; 
-    border-right: 2px solid #fff; /* İki resmi ayıran temiz çizgi */
+    border-right: 2px solid #fff; 
 }
 
 .img-wrapper img { 
-    width: 200%; /* Kendi yarım kutusunda tam görünmesi için kritik ayar */
+    width: 200%; 
     height: 100%; 
     object-fit: cover; 
     transition: transform 0.6s ease;
 }
 
-/* Before resmi sola yaslanmalı, After resmi sağdan gelmeli */
 .before img { object-position: left; }
 .after img { object-position: right; }
 
-/* Hover'da fotoğraflar hafifçe canlanır */
+
 .comparison-card:hover .img-wrapper img {
     transform: scale(1.05);
 }
 
-/* Etiketler (Labels) */
+
 .img-wrapper .label { 
     position: absolute; 
-    top: 15px; /* Alt yerine üste alarak daha modern bir görünüm sağladık */
+    top: 15px; 
     padding: 5px 12px; 
     font-size: 10px; 
     font-weight: 800; 
@@ -1537,7 +1524,7 @@ section::after {
 .before .label { background: rgba(231, 76, 60, 0.85); left: 10px; } 
 .after .label { background: rgba(46, 204, 113, 0.85); right: 10px; }
 
-/* Bilgi Alanı */
+
 .comparison-info { 
     padding: 25px 20px; 
     background: #fff;
@@ -1555,11 +1542,11 @@ section::after {
 
 .comparison-info p { 
     font-size: 0.9rem; 
-    color: #555; /* #ffffff yerine okunabilir koyu gri yapıldı */
+    color: #555; 
     line-height: 1.5;
 }
 
-/* --- MOBİL AYARI --- */
+
 @media screen and (max-width: 480px) {
     .comparison-box { height: 220px; }
     .comparison-grid { gap: 20px; padding: 0 10px; }

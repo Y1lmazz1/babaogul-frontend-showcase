@@ -7,11 +7,11 @@
     --wa-green: #25d366;
 }
 
-/* Sayfa Sonu ve Arka Plan Beyazlığını Engelleme */
+
 html, body {
     margin: 0;
     padding: 0;
-    background-color: var(--dark-bg); /* Kesin çözüm */
+    background-color: var(--dark-bg); 
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
@@ -272,18 +272,17 @@ html, body {
     letter-spacing: 1px;
 }
 
-/* Satılan Kartın Gri Görünmesi */
 .vehicle-card.is-sold-active {
     opacity: 0.7;
     filter: grayscale(0.8);
-    pointer-events: none; /* Üzerine tıklanmasın derseniz bunu ekleyin */
+    pointer-events: none; 
 }
 
 .vehicle-card.is-sold-active .img-container {
     cursor: default;
 }
 
-/* Satıldı Buton Tasarımı */
+
 .wa-contact-disabled {
     background: #444;
     color: #888;
